@@ -24,7 +24,6 @@
 //!     arr2(&[[0, 1, 2], [3, 4, 5]]));
 //! ~~~
 
-use std::convert::TryFrom;
 use std::error::Error;
 use std::fmt;
 
@@ -127,18 +126,6 @@ where
         // Unwrapping is safe here, since the shape/size compatibility
         // is guaranteed by Tensor itself.
         ArrayViewMut::from_shape(self.shape.clone(), &mut self.inner).unwrap()
-    }
-}
-
-impl<T, D> TryFrom<Tensor<T>> for NdTensor<T, D>
-where
-    T: TensorType,
-    D: Dimension,
-{
-    type Error = ShapeError;
-
-    fn try_from(tensor: Tensor<T>) -> Result<Self, Self::Error> {
-        Self::from_tensor(tensor)
     }
 }
 
