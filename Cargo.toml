@@ -18,5 +18,5 @@ exclude = [
 ]
 
 [dependencies]
-ndarray = "0.12"
+ndarray = "0.13"
 tensorflow = "0.13"
